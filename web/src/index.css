@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────────── */
+:root {
+  --bg:            #f7f3ee;
+  --surface:       #ffffff;
+  --surface-alt:   #f0ebe3;
+  --primary:       #2c4a3e;
+  --primary-hover: #1e3329;
+  --primary-light: #e8f0ec;
+  --accent:        #c8892a;
+  --accent-hover:  #b07720;
+  --accent-light:  #fdf3e3;
+  --text:          #1c1917;
+  --text-muted:    #78716c;
+  --text-faint:    #a8a29e;
+  --border:        #e2d9ce;
+  --border-focus:  #2c4a3e;
+  --danger:        #9b1c1c;
+  --danger-light:  #fef2f2;
+  --success:       #166534;
+  --success-light: #f0fdf4;
+  --shadow-sm:     0 1px 3px rgba(28,25,23,.08), 0 1px 2px rgba(28,25,23,.05);
+  --shadow:        0 4px 12px rgba(28,25,23,.10), 0 2px 4px rgba(28,25,23,.06);
+  --shadow-lg:     0 8px 24px rgba(28,25,23,.12), 0 4px 8px rgba(28,25,23,.08);
+  --radius:        0.625rem;
+  --font-display:  "Lora", Georgia, serif;
+  --font-body:     "Nunito", system-ui, sans-serif;
+}
+
+/* ── Global ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+
+/* ── Utilities ──────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+/* ── Form controls ──────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+  font-family: var(--font-body);
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
