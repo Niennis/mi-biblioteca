@@ -71,7 +71,7 @@ describe("useBookSearch", () => {
     await advanceAndFlush(400);
 
     expect(result.current.books).toHaveLength(1);
-    expect(result.current.books[0].title).toBe("El Quijote");
+    expect(result.current.books[0]?.title).toBe("El Quijote");
     expect(result.current.totalItems).toBe(1);
     expect(result.current.loading).toBe(false);
   });

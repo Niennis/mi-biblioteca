@@ -28,5 +28,3 @@ Thumbs.db
 # Coverage
 coverage/
 
-# Vite
-web/src/vite-env.d.ts

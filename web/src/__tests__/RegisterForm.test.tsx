@@ -17,14 +17,6 @@ describe("RegisterForm", () => {
     vi.clearAllMocks();
   });
 
-  function fillRegisterForm(password: string, confirm: string) {
-    return async () => {
-      await userEvent.type(screen.getByLabelText(/correo electrónico/i), "ana@test.com");
-      await userEvent.type(screen.getByLabelText(/^contraseña$/i), password);
-      await userEvent.type(screen.getByLabelText(/confirmar contraseña/i), confirm);
-    };
-  }
-
   it("muestra error cuando las contraseñas no coinciden", async () => {
     render(<RegisterForm />);
     await userEvent.type(screen.getByLabelText(/correo electrónico/i), "ana@test.com");
